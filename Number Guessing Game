@@ -1,0 +1,43 @@
+import random
+
+EASY_TURNS = 10
+HARD_TURNS = 5
+
+def difficulty():
+  level = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
+  if level == "easy":
+    return EASY_TURNS
+  elif level == "hard":
+    return HARD_TURNS
+
+def check_answer(guess, answer, turns):
+  if guess > answer:
+    print("Too high!.")
+    return turns - 1
+  elif guess < answer:
+    print("Too low!.")
+    return turns - 1
+  elif guess == answer:
+    print("Correct answer!")
+
+def game():
+  answer = random.randint(1,100)
+  print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100.")
+  print(f"Psssst, the answer is {answer}.")
+  turns = difficulty()
+  
+  guess = 0
+  game_over = False
+  while guess != answer and not(game_over):
+    print(f"You have {turns} guesses remaining.")
+    guess = int(input("Make a guess: "))
+    turns = check_answer(guess, answer, turns)
+    if turns != 0:
+      print("Guess again.")
+    elif turns == 0:
+      game_over = True
+      print(f"Sorry you ran out of guesses! The correct answer was {answer}.")
+
+while input("\nDo you want to play a number guessing game? Type 'y' or 'n': ").lower() == "y":
+  game()
+  
