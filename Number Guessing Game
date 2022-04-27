@@ -36,7 +36,7 @@ def game():
       print("Guess again.")
     elif turns == 0:
       game_over = True
-      print(f"Sorry you ran out of guesses! The correct answer was {answer}.")
+      print(f"Sorry you ran out of guesses! The correct answer was {answer}.\n")
 
 while input("\nDo you want to play a number guessing game? Type 'y' or 'n': ").lower() == "y":
   game()
